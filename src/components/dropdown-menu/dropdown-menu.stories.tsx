@@ -16,7 +16,7 @@ import {
   DropdownMenuSubTrigger,
   DropdownMenuShortcut,
 } from './dropdown-menu';
-import { User, CreditCard, Settings, LogOut } from 'lucide-react';
+import { User, Settings, LogOut } from 'lucide-react';
 
 // 创建一个包装组件来展示DropdownMenu
 const DropdownMenuDemo = () => {

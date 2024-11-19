@@ -15,7 +15,7 @@ export default defineConfig({
     lib: {
       entry: resolve(__dirname, 'src/index.ts'),
       name: 'YccUIComponents',
-      formats: ['es', 'umd'],
+      formats: ['es'],
       fileName: (format) => `index.${format}.js`
     },
     rollupOptions: {
@@ -26,7 +26,8 @@ export default defineConfig({
           'react-dom': 'ReactDOM'
         },
         preserveModules: true,
-        preserveModulesRoot: 'src'
+        preserveModulesRoot: 'src',
+        inlineDynamicImports: false
       }
     },
     cssCodeSplit: true,
