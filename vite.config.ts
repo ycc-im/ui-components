@@ -25,12 +25,15 @@ export default defineConfig({
           react: 'React',
           'react-dom': 'ReactDOM'
         },
-        preserveModules: true,
-        preserveModulesRoot: 'src',
-        inlineDynamicImports: false
+        assetFileNames: (assetInfo) => {
+          if (assetInfo.name === 'style.css') {
+            return 'style.css'
+          }
+          return assetInfo.name as string
+        }
       }
     },
-    cssCodeSplit: true,
+    cssCodeSplit: false,
     sourcemap: true,
   },
   resolve: {
