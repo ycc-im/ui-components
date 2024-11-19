@@ -1,5 +1,6 @@
-import { describe, it, expect, vi } from 'vitest'
-import { render, screen, fireEvent } from '@testing-library/react'
+import { fireEvent, render, screen } from '@testing-library/react'
+import { describe, expect, it, vi } from 'vitest'
+
 import { Input } from './input'
 
 describe('Input', () => {
@@ -40,7 +41,7 @@ describe('Input', () => {
   it('handles value changes', () => {
     render(<Input />)
     const input = screen.getByRole('textbox') as HTMLInputElement
-    
+
     fireEvent.change(input, { target: { value: 'test value' } })
     expect(input.value).toBe('test value')
   })
@@ -49,23 +50,17 @@ describe('Input', () => {
     const onFocus = vi.fn()
     const onBlur = vi.fn()
     const onChange = vi.fn()
-    
-    render(
-      <Input
-        onFocus={onFocus}
-        onBlur={onBlur}
-        onChange={onChange}
-      />
-    )
-    
+
+    render(<Input onFocus={onFocus} onBlur={onBlur} onChange={onChange} />)
+
     const input = screen.getByRole('textbox')
-    
+
     fireEvent.focus(input)
     expect(onFocus).toHaveBeenCalled()
-    
+
     fireEvent.change(input, { target: { value: 'test' } })
     expect(onChange).toHaveBeenCalled()
-    
+
     fireEvent.blur(input)
     expect(onBlur).toHaveBeenCalled()
   })

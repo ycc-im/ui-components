@@ -1,44 +1,45 @@
-import type { Meta, StoryObj } from "@storybook/react";
-import { Badge } from "./badge";
+import type { Meta, StoryObj } from '@storybook/react'
+
+import { Badge } from './badge'
 
 const meta = {
-  title: "Components/Badge 徽章",
+  title: 'Components/Badge 徽章',
   component: Badge,
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
-  tags: ["autodocs"],
-} satisfies Meta<typeof Badge>;
+  tags: ['autodocs'],
+} satisfies Meta<typeof Badge>
 
-export default meta;
-type Story = StoryObj<typeof meta>;
+export default meta
+type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
   args: {
-    children: "Badge",
+    children: 'Badge',
   },
-};
+}
 
 export const Secondary: Story = {
   args: {
-    variant: "secondary",
-    children: "Secondary",
+    variant: 'secondary',
+    children: 'Secondary',
   },
-};
+}
 
 export const Destructive: Story = {
   args: {
-    variant: "destructive",
-    children: "Destructive",
+    variant: 'destructive',
+    children: 'Destructive',
   },
-};
+}
 
 export const Outline: Story = {
   args: {
-    variant: "outline",
-    children: "Outline",
+    variant: 'outline',
+    children: 'Outline',
   },
-};
+}
 
 export const AllVariants: Story = {
   render: () => (
@@ -49,4 +50,4 @@ export const AllVariants: Story = {
       <Badge variant="outline">Outline</Badge>
     </div>
   ),
-};
+}

@@ -1,15 +1,16 @@
-import { describe, it, expect } from 'vitest'
-import { render, screen, fireEvent } from '@testing-library/react'
+import { fireEvent, render, screen } from '@testing-library/react'
+import { describe, expect, it } from 'vitest'
+
+import { Button } from '../button'
 import {
   Dialog,
-  DialogTrigger,
   DialogContent,
-  DialogHeader,
-  DialogFooter,
-  DialogTitle,
   DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
 } from './dialog'
-import { Button } from '../button'
 
 describe('Dialog', () => {
   it('renders dialog trigger correctly', () => {
@@ -23,9 +24,9 @@ describe('Dialog', () => {
             <DialogTitle>Test Dialog</DialogTitle>
           </DialogHeader>
         </DialogContent>
-      </Dialog>
+      </Dialog>,
     )
-    
+
     expect(screen.getByRole('button')).toBeDefined()
     expect(screen.getByText('Open Dialog')).toBeDefined()
   })
@@ -45,7 +46,7 @@ describe('Dialog', () => {
             <Button>Close</Button>
           </DialogFooter>
         </DialogContent>
-      </Dialog>
+      </Dialog>,
     )
 
     // 点击触发器打开对话框
@@ -63,15 +64,13 @@ describe('Dialog', () => {
         <DialogContent className="custom-content">
           <DialogHeader className="custom-header">
             <DialogTitle className="custom-title">Test Dialog</DialogTitle>
-            <DialogDescription className="custom-description">
-              Test Description
-            </DialogDescription>
+            <DialogDescription className="custom-description">Test Description</DialogDescription>
           </DialogHeader>
           <DialogFooter className="custom-footer">
             <Button>Close</Button>
           </DialogFooter>
         </DialogContent>
-      </Dialog>
+      </Dialog>,
     )
 
     // 打开对话框
@@ -94,7 +93,7 @@ describe('Dialog', () => {
         <DialogContent>
           <DialogTitle>Test Dialog</DialogTitle>
         </DialogContent>
-      </Dialog>
+      </Dialog>,
     )
 
     // 打开对话框
@@ -127,7 +126,7 @@ describe('Dialog', () => {
             </Dialog>
           </DialogHeader>
         </DialogContent>
-      </Dialog>
+      </Dialog>,
     )
 
     // 验证嵌套对话框的结构

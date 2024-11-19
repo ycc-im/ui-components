@@ -1,6 +1,7 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { Button } from './button';
-import { Mail, Plus } from "lucide-react";
+import type { Meta, StoryObj } from '@storybook/react'
+import { Mail, Plus } from 'lucide-react'
+
+import { Button } from './button'
 
 const meta = {
   title: 'Components/Button 按钮',
@@ -9,45 +10,45 @@ const meta = {
     layout: 'centered',
   },
   tags: ['autodocs'],
-} satisfies Meta<typeof Button>;
+} satisfies Meta<typeof Button>
 
-export default meta;
-type Story = StoryObj<typeof meta>;
+export default meta
+type Story = StoryObj<typeof meta>
 
 export const Primary: Story = {
   args: {
     children: '主要按钮',
     variant: 'default',
   },
-};
+}
 
 export const Secondary: Story = {
   args: {
     children: '次要按钮',
     variant: 'secondary',
   },
-};
+}
 
 export const Outline: Story = {
   args: {
     children: '轮廓按钮',
     variant: 'outline',
   },
-};
+}
 
 export const Destructive: Story = {
   args: {
     children: '危险按钮',
     variant: 'destructive',
   },
-};
+}
 
 export const Ghost: Story = {
   args: {
     children: '幽灵按钮',
     variant: 'ghost',
   },
-};
+}
 
 export const WithIcon: Story = {
   args: {
@@ -58,21 +59,21 @@ export const WithIcon: Story = {
       </>
     ),
   },
-};
+}
 
 export const Loading: Story = {
   args: {
     children: '加载中...',
     disabled: true,
   },
-};
+}
 
 export const Link: Story = {
   args: {
     children: '链接按钮',
     variant: 'link',
   },
-};
+}
 
 // 新增宽度相关示例
 export const WidthExamples: Story = {
@@ -120,4 +121,4 @@ export const WidthExamples: Story = {
       },
     },
   },
-};
+}

@@ -1,12 +1,9 @@
-import * as React from "react"
-import {
-  Dialog,
-  DialogContent,
-  DialogTrigger,
-} from "../dialog"
-import { Button } from "../button"
-import { Loader2, Lightbulb } from "lucide-react"
-import { cn } from "../../lib/utils"
+import { Lightbulb, Loader2 } from 'lucide-react'
+import * as React from 'react'
+
+import { cn } from '../../lib/utils'
+import { Button } from '../button'
+import { Dialog, DialogContent, DialogTrigger } from '../dialog'
 
 interface SimpleDialogProps {
   children: React.ReactNode
@@ -43,9 +40,7 @@ export function SimpleDialog({
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogTrigger asChild>
-        {trigger}
-      </DialogTrigger>
+      <DialogTrigger asChild>{trigger}</DialogTrigger>
       <DialogContent className={className} {...props}>
         {title && (
           <div className="mb-4 flex flex-col space-y-1.5 text-center sm:text-left">
@@ -55,36 +50,29 @@ export function SimpleDialog({
         {children}
         <div className="mt-4 flex flex-col-reverse sm:flex-row sm:justify-end sm:items-center sm:space-x-4">
           {tips && (
-            <div className={cn(
-              "mb-2 sm:mb-0 sm:mr-auto text-sm flex items-center gap-1.5",
-              typeof tips === 'string' && "text-gray-600"
-            )}>
-              {typeof tips === 'string' && (
-                <Lightbulb className="h-4 w-4 text-yellow-500" />
+            <div
+              className={cn(
+                'mb-2 sm:mb-0 sm:mr-auto text-sm flex items-center gap-1.5',
+                typeof tips === 'string' && 'text-gray-600',
               )}
+            >
+              {typeof tips === 'string' && <Lightbulb className="h-4 w-4 text-yellow-500" />}
               {tips}
             </div>
           )}
           <div className="flex flex-col-reverse sm:flex-row sm:space-x-2">
             {cancelText && (
-              <Button
-                variant="outline"
-                onClick={() => setOpen(false)}
-                disabled={isLoading}
-              >
+              <Button variant="outline" onClick={() => setOpen(false)} disabled={isLoading}>
                 {cancelText}
               </Button>
             )}
             {confirmText && (
-              <Button 
+              <Button
                 onClick={handleConfirm}
                 disabled={isLoading}
                 className="relative min-w-[80px]"
               >
-                <span className={cn(
-                  "transition-opacity",
-                  isLoading ? "opacity-0" : "opacity-100"
-                )}>
+                <span className={cn('transition-opacity', isLoading ? 'opacity-0' : 'opacity-100')}>
                   {confirmText}
                 </span>
                 {isLoading && (

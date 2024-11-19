@@ -1,7 +1,8 @@
-import { describe, it, expect } from 'vitest'
-import { render, screen, fireEvent } from '@testing-library/react'
-import { Popover, PopoverContent, PopoverTrigger } from './popover'
+import { fireEvent, render, screen } from '@testing-library/react'
+import { describe, expect, it } from 'vitest'
+
 import { Button } from '../button'
+import { Popover, PopoverContent, PopoverTrigger } from './popover'
 
 describe('Popover', () => {
   it('renders trigger correctly', () => {
@@ -13,9 +14,9 @@ describe('Popover', () => {
         <PopoverContent>
           <p>Popover Content</p>
         </PopoverContent>
-      </Popover>
+      </Popover>,
     )
-    
+
     expect(screen.getByRole('button')).toBeDefined()
     expect(screen.getByText('Open Popover')).toBeDefined()
   })
@@ -29,7 +30,7 @@ describe('Popover', () => {
         <PopoverContent>
           <p>Popover Content</p>
         </PopoverContent>
-      </Popover>
+      </Popover>,
     )
 
     // 点击触发器打开弹出框
@@ -48,7 +49,7 @@ describe('Popover', () => {
         <PopoverContent side="top">
           <p>Top Content</p>
         </PopoverContent>
-      </Popover>
+      </Popover>,
     )
 
     // 点击触发器打开弹出框
@@ -62,13 +63,11 @@ describe('Popover', () => {
   it('applies custom className', () => {
     render(
       <Popover>
-        <PopoverTrigger className="custom-trigger">
-          Open Popover
-        </PopoverTrigger>
+        <PopoverTrigger className="custom-trigger">Open Popover</PopoverTrigger>
         <PopoverContent className="custom-content">
           <p>Content</p>
         </PopoverContent>
-      </Popover>
+      </Popover>,
     )
 
     const trigger = screen.getByText('Open Popover') as HTMLElement
@@ -84,7 +83,7 @@ describe('Popover', () => {
         <PopoverContent align="start">
           <p>Content</p>
         </PopoverContent>
-      </Popover>
+      </Popover>,
     )
 
     // 点击触发器打开弹出框
@@ -104,7 +103,7 @@ describe('Popover', () => {
         <PopoverContent sideOffset={10}>
           <p>Content</p>
         </PopoverContent>
-      </Popover>
+      </Popover>,
     )
 
     // 点击触发器打开弹出框

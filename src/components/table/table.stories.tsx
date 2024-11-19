@@ -1,13 +1,14 @@
 import type { Meta, StoryObj } from '@storybook/react'
+
 import {
   Table,
-  TableHeader,
   TableBody,
+  TableCaption,
+  TableCell,
   TableFooter,
   TableHead,
+  TableHeader,
   TableRow,
-  TableCell,
-  TableCaption,
 } from './table'
 
 const meta = {
@@ -24,34 +25,34 @@ type Story = StoryObj<typeof meta>
 
 const invoices = [
   {
-    invoice: "INV001",
-    paymentStatus: "已支付",
-    totalAmount: "¥250.00",
-    paymentMethod: "支付宝",
+    invoice: 'INV001',
+    paymentStatus: '已支付',
+    totalAmount: '¥250.00',
+    paymentMethod: '支付宝',
   },
   {
-    invoice: "INV002",
-    paymentStatus: "待支付",
-    totalAmount: "¥150.00",
-    paymentMethod: "微信支付",
+    invoice: 'INV002',
+    paymentStatus: '待支付',
+    totalAmount: '¥150.00',
+    paymentMethod: '微信支付',
   },
   {
-    invoice: "INV003",
-    paymentStatus: "待支付",
-    totalAmount: "¥350.00",
-    paymentMethod: "银行卡",
+    invoice: 'INV003',
+    paymentStatus: '待支付',
+    totalAmount: '¥350.00',
+    paymentMethod: '银行卡',
   },
   {
-    invoice: "INV004",
-    paymentStatus: "已支付",
-    totalAmount: "¥450.00",
-    paymentMethod: "支付宝",
+    invoice: 'INV004',
+    paymentStatus: '已支付',
+    totalAmount: '¥450.00',
+    paymentMethod: '支付宝',
   },
   {
-    invoice: "INV005",
-    paymentStatus: "已支付",
-    totalAmount: "¥550.00",
-    paymentMethod: "微信支付",
+    invoice: 'INV005',
+    paymentStatus: '已支付',
+    totalAmount: '¥550.00',
+    paymentMethod: '微信支付',
   },
 ]
 
@@ -128,7 +129,9 @@ export const CustomStyle: Story = {
         {invoices.map((invoice) => (
           <TableRow key={invoice.invoice}>
             <TableCell className="font-medium">{invoice.invoice}</TableCell>
-            <TableCell className={invoice.paymentStatus === "已支付" ? "text-green-500" : "text-orange-500"}>
+            <TableCell
+              className={invoice.paymentStatus === '已支付' ? 'text-green-500' : 'text-orange-500'}
+            >
               {invoice.paymentStatus}
             </TableCell>
             <TableCell>{invoice.totalAmount}</TableCell>

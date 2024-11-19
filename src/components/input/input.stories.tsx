@@ -1,5 +1,6 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { Input } from './input';
+import type { Meta, StoryObj } from '@storybook/react'
+
+import { Input } from './input'
 
 const meta = {
   title: 'Components/Input 输入框',
@@ -8,17 +9,17 @@ const meta = {
     layout: 'centered',
   },
   tags: ['autodocs'],
-} satisfies Meta<typeof Input>;
+} satisfies Meta<typeof Input>
 
-export default meta;
-type Story = StoryObj<typeof meta>;
+export default meta
+type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
   args: {
     type: 'text',
     placeholder: '请输入文本...',
   },
-};
+}
 
 export const WithLabel: Story = {
   render: () => (
@@ -27,12 +28,10 @@ export const WithLabel: Story = {
         邮箱
       </label>
       <Input type="email" id="email" placeholder="example@example.com" />
-      <p className="text-sm text-muted-foreground">
-        请输入您的邮箱地址。
-      </p>
+      <p className="text-sm text-muted-foreground">请输入您的邮箱地址。</p>
     </div>
   ),
-};
+}
 
 export const Disabled: Story = {
   args: {
@@ -40,7 +39,7 @@ export const Disabled: Story = {
     disabled: true,
     placeholder: '禁用状态',
   },
-};
+}
 
 export const WithIcon: Story = {
   render: () => (
@@ -62,21 +61,21 @@ export const WithIcon: Story = {
       </svg>
     </div>
   ),
-};
+}
 
 export const File: Story = {
   args: {
     type: 'file',
     className: 'cursor-pointer',
   },
-};
+}
 
 export const Password: Story = {
   args: {
     type: 'password',
     placeholder: '请输入密码...',
   },
-};
+}
 
 export const Number: Story = {
   args: {
@@ -86,7 +85,7 @@ export const Number: Story = {
     max: 100,
     step: 1,
   },
-};
+}
 
 export const WithError: Story = {
   render: () => (
@@ -94,15 +93,8 @@ export const WithError: Story = {
       <label htmlFor="error" className="text-sm font-medium">
         错误状态
       </label>
-      <Input
-        type="email"
-        id="error"
-        placeholder="example@example.com"
-        className="border-red-500"
-      />
-      <p className="text-sm text-red-500">
-        请输入有效的邮箱地址。
-      </p>
+      <Input type="email" id="error" placeholder="example@example.com" className="border-red-500" />
+      <p className="text-sm text-red-500">请输入有效的邮箱地址。</p>
     </div>
   ),
-};
+}

@@ -1,22 +1,23 @@
-import * as React from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
-import { Button } from '../button';
+import type { Meta, StoryObj } from '@storybook/react'
+import { LogOut, Settings, User } from 'lucide-react'
+import * as React from 'react'
+
+import { Button } from '../button'
 import {
   DropdownMenu,
+  DropdownMenuCheckboxItem,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-  DropdownMenuCheckboxItem,
   DropdownMenuRadioGroup,
   DropdownMenuRadioItem,
+  DropdownMenuSeparator,
+  DropdownMenuShortcut,
   DropdownMenuSub,
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
-  DropdownMenuShortcut,
-} from './dropdown-menu';
-import { User, Settings, LogOut } from 'lucide-react';
+  DropdownMenuTrigger,
+} from './dropdown-menu'
 
 // 创建一个包装组件来展示DropdownMenu
 const DropdownMenuDemo = () => {
@@ -42,8 +43,8 @@ const DropdownMenuDemo = () => {
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
-  );
-};
+  )
+}
 
 const meta = {
   title: 'Components/DropdownMenu 下拉菜单',
@@ -52,16 +53,16 @@ const meta = {
     layout: 'centered',
   },
   tags: ['autodocs'],
-} satisfies Meta<typeof DropdownMenuDemo>;
+} satisfies Meta<typeof DropdownMenuDemo>
 
-export default meta;
-type Story = StoryObj<typeof meta>;
+export default meta
+type Story = StoryObj<typeof meta>
 
-export const Basic: Story = {};
+export const Basic: Story = {}
 
 export const WithCheckboxes: Story = {
   render: () => {
-    const [checked, setChecked] = React.useState(true);
+    const [checked, setChecked] = React.useState(true)
     return (
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
@@ -70,27 +71,20 @@ export const WithCheckboxes: Story = {
         <DropdownMenuContent className="w-56">
           <DropdownMenuLabel>外观</DropdownMenuLabel>
           <DropdownMenuSeparator />
-          <DropdownMenuCheckboxItem
-            checked={checked}
-            onCheckedChange={setChecked}
-          >
+          <DropdownMenuCheckboxItem checked={checked} onCheckedChange={setChecked}>
             显示状态栏
           </DropdownMenuCheckboxItem>
-          <DropdownMenuCheckboxItem checked>
-            显示行号
-          </DropdownMenuCheckboxItem>
-          <DropdownMenuCheckboxItem>
-            显示迷你地图
-          </DropdownMenuCheckboxItem>
+          <DropdownMenuCheckboxItem checked>显示行号</DropdownMenuCheckboxItem>
+          <DropdownMenuCheckboxItem>显示迷你地图</DropdownMenuCheckboxItem>
         </DropdownMenuContent>
       </DropdownMenu>
-    );
+    )
   },
-};
+}
 
 export const WithRadioGroup: Story = {
   render: () => {
-    const [position, setPosition] = React.useState("bottom");
+    const [position, setPosition] = React.useState('bottom')
     return (
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
@@ -106,9 +100,9 @@ export const WithRadioGroup: Story = {
           </DropdownMenuRadioGroup>
         </DropdownMenuContent>
       </DropdownMenu>
-    );
+    )
   },
-};
+}
 
 export const WithSubmenu: Story = {
   render: () => (
@@ -146,4 +140,4 @@ export const WithSubmenu: Story = {
       </DropdownMenuContent>
     </DropdownMenu>
   ),
-};
+}

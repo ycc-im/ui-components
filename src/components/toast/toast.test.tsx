@@ -1,25 +1,22 @@
-import { describe, it, expect, vi } from 'vitest'
-import { render, screen, fireEvent, act } from '@testing-library/react'
+import { act, fireEvent, render, screen } from '@testing-library/react'
+import { describe, expect, it, vi } from 'vitest'
+
+import { Button } from '../button'
 import {
   Toast,
-  ToastTitle,
-  ToastDescription,
   ToastAction,
   ToastClose,
+  ToastDescription,
   ToastProvider,
+  ToastTitle,
   ToastViewport,
 } from './toast'
 import { useToast } from './use-toast'
-import { Button } from '../button'
 
 // 创建一个测试组件来使用useToast
 const TestComponent = () => {
   const { toast } = useToast()
-  return (
-    <Button onClick={() => toast({ title: 'Test Toast' })}>
-      Show Toast
-    </Button>
-  )
+  return <Button onClick={() => toast({ title: 'Test Toast' })}>Show Toast</Button>
 }
 
 describe('Toast', () => {
@@ -35,7 +32,7 @@ describe('Toast', () => {
           <ToastClose />
         </Toast>
         <ToastViewport />
-      </ToastProvider>
+      </ToastProvider>,
     )
 
     expect(screen.getByText('Test Title')).toBeDefined()
@@ -51,7 +48,7 @@ describe('Toast', () => {
         <Toast variant="destructive">Destructive Toast</Toast>
         <Toast variant="success">Success Toast</Toast>
         <Toast variant="warning">Warning Toast</Toast>
-      </ToastProvider>
+      </ToastProvider>,
     )
 
     const toasts = container.querySelectorAll('[role="status"]')
@@ -63,14 +60,14 @@ describe('Toast', () => {
 
   it('handles close action', () => {
     const onOpenChange = vi.fn()
-    
+
     render(
       <ToastProvider>
         <Toast onOpenChange={onOpenChange}>
           <ToastTitle>Test Toast</ToastTitle>
           <ToastClose />
         </Toast>
-      </ToastProvider>
+      </ToastProvider>,
     )
 
     // 点击关闭按钮
@@ -80,7 +77,7 @@ describe('Toast', () => {
 
   it('handles action click', () => {
     const onAction = vi.fn()
-    
+
     render(
       <ToastProvider>
         <Toast>
@@ -89,7 +86,7 @@ describe('Toast', () => {
             <Button>Action</Button>
           </ToastAction>
         </Toast>
-      </ToastProvider>
+      </ToastProvider>,
     )
 
     // 点击操作按钮
@@ -102,7 +99,7 @@ describe('Toast', () => {
       <ToastProvider>
         <TestComponent />
         <ToastViewport />
-      </ToastProvider>
+      </ToastProvider>,
     )
 
     // 点击显示Toast
@@ -116,7 +113,7 @@ describe('Toast', () => {
     const TestMultipleToasts = () => {
       const { toast } = useToast()
       return (
-        <Button 
+        <Button
           onClick={() => {
             toast({ title: 'Toast 1' })
             toast({ title: 'Toast 2' })
@@ -131,7 +128,7 @@ describe('Toast', () => {
       <ToastProvider>
         <TestMultipleToasts />
         <ToastViewport />
-      </ToastProvider>
+      </ToastProvider>,
     )
 
     // 点击显示多个Toast
@@ -147,10 +144,12 @@ describe('Toast', () => {
       const { toast, dismiss } = useToast()
       return (
         <>
-          <Button onClick={() => {
-            const { id } = toast({ title: 'Dismissible Toast' })
-            setTimeout(() => dismiss(id), 0)
-          }}>
+          <Button
+            onClick={() => {
+              const { id } = toast({ title: 'Dismissible Toast' })
+              setTimeout(() => dismiss(id), 0)
+            }}
+          >
             Show Toast
           </Button>
         </>
@@ -161,7 +160,7 @@ describe('Toast', () => {
       <ToastProvider>
         <TestDismissToast />
         <ToastViewport />
-      </ToastProvider>
+      </ToastProvider>,
     )
 
     // 点击显示Toast
@@ -171,7 +170,7 @@ describe('Toast', () => {
     act(() => {
       vi.runAllTimers()
     })
-    
+
     expect(screen.queryByText('Dismissible Toast')).toBeNull()
   })
 })

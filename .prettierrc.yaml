@@ -1,0 +1,12 @@
+semi: false
+singleQuote: true
+tabWidth: 2
+printWidth: 100
+useTabs: false
+bracketSpacing: true
+importOrder: ['^@remix(-.+)?/(.*)$', '^~/(.*)$', '^[./]']
+importOrderCaseInsensitive: true
+importOrderSeparation: true
+importOrderSortSpecifiers: true
+trailingComma: all
+plugins: ['@trivago/prettier-plugin-sort-imports']

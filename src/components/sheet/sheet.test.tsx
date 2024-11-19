@@ -1,15 +1,16 @@
-import { describe, it, expect } from 'vitest'
-import { render, screen, fireEvent } from '@testing-library/react'
+import { fireEvent, render, screen } from '@testing-library/react'
+import { describe, expect, it } from 'vitest'
+
+import { Button } from '../button'
 import {
   Sheet,
-  SheetTrigger,
   SheetContent,
-  SheetHeader,
-  SheetFooter,
-  SheetTitle,
   SheetDescription,
+  SheetFooter,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
 } from './sheet'
-import { Button } from '../button'
 
 describe('Sheet', () => {
   it('renders trigger correctly', () => {
@@ -21,9 +22,9 @@ describe('Sheet', () => {
         <SheetContent>
           <p>Sheet Content</p>
         </SheetContent>
-      </Sheet>
+      </Sheet>,
     )
-    
+
     expect(screen.getByRole('button')).toBeDefined()
     expect(screen.getByText('Open Sheet')).toBeDefined()
   })
@@ -37,7 +38,7 @@ describe('Sheet', () => {
         <SheetContent>
           <p>Sheet Content</p>
         </SheetContent>
-      </Sheet>
+      </Sheet>,
     )
 
     // 点击触发器打开抽屉
@@ -56,7 +57,7 @@ describe('Sheet', () => {
         <SheetContent side="left">
           <p>Left Content</p>
         </SheetContent>
-      </Sheet>
+      </Sheet>,
     )
 
     // 点击触发器打开抽屉
@@ -82,7 +83,7 @@ describe('Sheet', () => {
             <Button>Save</Button>
           </SheetFooter>
         </SheetContent>
-      </Sheet>
+      </Sheet>,
     )
 
     // 点击触发器打开抽屉
@@ -97,15 +98,13 @@ describe('Sheet', () => {
   it('applies custom className', () => {
     render(
       <Sheet>
-        <SheetTrigger className="custom-trigger">
-          Open Sheet
-        </SheetTrigger>
+        <SheetTrigger className="custom-trigger">Open Sheet</SheetTrigger>
         <SheetContent className="custom-content">
           <SheetHeader className="custom-header">
             <SheetTitle className="custom-title">Title</SheetTitle>
           </SheetHeader>
         </SheetContent>
-      </Sheet>
+      </Sheet>,
     )
 
     const trigger = screen.getByText('Open Sheet') as HTMLElement
@@ -121,7 +120,7 @@ describe('Sheet', () => {
         <SheetContent>
           <p>Sheet Content</p>
         </SheetContent>
-      </Sheet>
+      </Sheet>,
     )
 
     // 打开抽屉

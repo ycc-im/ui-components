@@ -1,21 +1,22 @@
-import { describe, it, expect, vi } from 'vitest'
-import { render, screen, fireEvent } from '@testing-library/react'
+import { fireEvent, render, screen } from '@testing-library/react'
+import { describe, expect, it, vi } from 'vitest'
+
+import { Button } from '../button'
 import {
   DropdownMenu,
-  DropdownMenuTrigger,
+  DropdownMenuCheckboxItem,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuCheckboxItem,
+  DropdownMenuLabel,
   DropdownMenuRadioGroup,
   DropdownMenuRadioItem,
-  DropdownMenuLabel,
   DropdownMenuSeparator,
-  DropdownMenuSub,
-  DropdownMenuSubTrigger,
-  DropdownMenuSubContent,
   DropdownMenuShortcut,
+  DropdownMenuSub,
+  DropdownMenuSubContent,
+  DropdownMenuSubTrigger,
+  DropdownMenuTrigger,
 } from './dropdown-menu'
-import { Button } from '../button'
 
 describe('DropdownMenu', () => {
   it('renders trigger button correctly', () => {
@@ -27,9 +28,9 @@ describe('DropdownMenu', () => {
         <DropdownMenuContent>
           <DropdownMenuItem>Item 1</DropdownMenuItem>
         </DropdownMenuContent>
-      </DropdownMenu>
+      </DropdownMenu>,
     )
-    
+
     expect(screen.getByRole('button')).toBeDefined()
     expect(screen.getByText('Open Menu')).toBeDefined()
   })
@@ -45,7 +46,7 @@ describe('DropdownMenu', () => {
           <DropdownMenuSeparator />
           <DropdownMenuItem>Item 1</DropdownMenuItem>
         </DropdownMenuContent>
-      </DropdownMenu>
+      </DropdownMenu>,
     )
 
     // 点击触发器打开菜单
@@ -58,21 +59,18 @@ describe('DropdownMenu', () => {
 
   it('handles checkbox items correctly', () => {
     const onCheckedChange = vi.fn()
-    
+
     render(
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button>Open Menu</Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent>
-          <DropdownMenuCheckboxItem
-            checked={true}
-            onCheckedChange={onCheckedChange}
-          >
+          <DropdownMenuCheckboxItem checked={true} onCheckedChange={onCheckedChange}>
             Checkbox Item
           </DropdownMenuCheckboxItem>
         </DropdownMenuContent>
-      </DropdownMenu>
+      </DropdownMenu>,
     )
 
     // 点击触发器打开菜单
@@ -85,7 +83,7 @@ describe('DropdownMenu', () => {
 
   it('handles radio group correctly', () => {
     const onValueChange = vi.fn()
-    
+
     render(
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
@@ -97,7 +95,7 @@ describe('DropdownMenu', () => {
             <DropdownMenuRadioItem value="option2">Option 2</DropdownMenuRadioItem>
           </DropdownMenuRadioGroup>
         </DropdownMenuContent>
-      </DropdownMenu>
+      </DropdownMenu>,
     )
 
     // 点击触发器打开菜单
@@ -122,7 +120,7 @@ describe('DropdownMenu', () => {
             </DropdownMenuSubContent>
           </DropdownMenuSub>
         </DropdownMenuContent>
-      </DropdownMenu>
+      </DropdownMenu>,
     )
 
     // 点击触发器打开菜单
@@ -144,7 +142,7 @@ describe('DropdownMenu', () => {
             <DropdownMenuShortcut>⌘N</DropdownMenuShortcut>
           </DropdownMenuItem>
         </DropdownMenuContent>
-      </DropdownMenu>
+      </DropdownMenu>,
     )
 
     // 点击触发器打开菜单
@@ -157,13 +155,11 @@ describe('DropdownMenu', () => {
   it('applies custom className to menu components', () => {
     render(
       <DropdownMenu>
-        <DropdownMenuTrigger className="custom-trigger">
-          Open Menu
-        </DropdownMenuTrigger>
+        <DropdownMenuTrigger className="custom-trigger">Open Menu</DropdownMenuTrigger>
         <DropdownMenuContent className="custom-content">
           <DropdownMenuItem className="custom-item">Item</DropdownMenuItem>
         </DropdownMenuContent>
-      </DropdownMenu>
+      </DropdownMenu>,
     )
 
     const trigger = screen.getByText('Open Menu') as HTMLElement

@@ -1,5 +1,6 @@
-import { describe, it, expect, vi } from 'vitest'
-import { render, screen, fireEvent } from '@testing-library/react'
+import { fireEvent, render, screen } from '@testing-library/react'
+import { describe, expect, it, vi } from 'vitest'
+
 import { Calendar } from './calendar'
 
 describe('Calendar', () => {
@@ -28,11 +29,11 @@ describe('Calendar', () => {
   it('handles date selection', () => {
     const onSelect = vi.fn()
     render(<Calendar mode="single" onSelect={onSelect} />)
-    
+
     // 点击一个日期
     const dayButton = screen.getAllByRole('button')[10] // 获取一个日期按钮
     fireEvent.click(dayButton)
-    
+
     expect(onSelect).toHaveBeenCalled()
   })
 
@@ -40,11 +41,11 @@ describe('Calendar', () => {
     const customClassNames = {
       months: 'custom-months',
       month: 'custom-month',
-      caption: 'custom-caption'
+      caption: 'custom-caption',
     }
-    
+
     const { container } = render(<Calendar classNames={customClassNames} />)
-    
+
     expect(container.querySelector('.custom-months')).toBeDefined()
     expect(container.querySelector('.custom-month')).toBeDefined()
     expect(container.querySelector('.custom-caption')).toBeDefined()

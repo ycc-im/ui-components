@@ -1,28 +1,22 @@
-import { describe, it, expect, vi } from 'vitest'
-import { render, screen, fireEvent } from '@testing-library/react'
-import { SimpleDialog } from './simple-dialog'
+import { fireEvent, render, screen } from '@testing-library/react'
+import { describe, expect, it, vi } from 'vitest'
+
 import { Button } from '../button'
+import { SimpleDialog } from './simple-dialog'
 
 describe('SimpleDialog', () => {
   it('renders trigger correctly', () => {
-    render(
-      <SimpleDialog trigger={<Button>Open Dialog</Button>}>
-        Content
-      </SimpleDialog>
-    )
-    
+    render(<SimpleDialog trigger={<Button>Open Dialog</Button>}>Content</SimpleDialog>)
+
     expect(screen.getByRole('button')).toBeDefined()
     expect(screen.getByText('Open Dialog')).toBeDefined()
   })
 
   it('shows content when triggered', () => {
     render(
-      <SimpleDialog 
-        trigger={<Button>Open Dialog</Button>}
-        title="Test Title"
-      >
+      <SimpleDialog trigger={<Button>Open Dialog</Button>} title="Test Title">
         Test Content
-      </SimpleDialog>
+      </SimpleDialog>,
     )
 
     // 点击触发器打开对话框
@@ -35,16 +29,16 @@ describe('SimpleDialog', () => {
 
   it('handles cancel and confirm actions', () => {
     const onConfirm = vi.fn()
-    
+
     render(
-      <SimpleDialog 
+      <SimpleDialog
         trigger={<Button>Open Dialog</Button>}
         cancelText="Cancel"
         confirmText="Confirm"
         onConfirm={onConfirm}
       >
         Content
-      </SimpleDialog>
+      </SimpleDialog>,
     )
 
     // 点击触发器打开对话框
@@ -61,13 +55,9 @@ describe('SimpleDialog', () => {
 
   it('shows loading state', () => {
     render(
-      <SimpleDialog 
-        trigger={<Button>Open Dialog</Button>}
-        confirmText="Save"
-        isLoading={true}
-      >
+      <SimpleDialog trigger={<Button>Open Dialog</Button>} confirmText="Save" isLoading={true}>
         Content
-      </SimpleDialog>
+      </SimpleDialog>,
     )
 
     // 点击触发器打开对话框
@@ -81,12 +71,9 @@ describe('SimpleDialog', () => {
 
   it('displays tips correctly', () => {
     render(
-      <SimpleDialog 
-        trigger={<Button>Open Dialog</Button>}
-        tips="Important tip"
-      >
+      <SimpleDialog trigger={<Button>Open Dialog</Button>} tips="Important tip">
         Content
-      </SimpleDialog>
+      </SimpleDialog>,
     )
 
     // 点击触发器打开对话框
@@ -104,12 +91,9 @@ describe('SimpleDialog', () => {
     )
 
     render(
-      <SimpleDialog 
-        trigger={<Button>Open Dialog</Button>}
-        title="Custom Form"
-      >
+      <SimpleDialog trigger={<Button>Open Dialog</Button>} title="Custom Form">
         <CustomContent />
-      </SimpleDialog>
+      </SimpleDialog>,
     )
 
     // 点击触发器打开对话框
@@ -121,12 +105,9 @@ describe('SimpleDialog', () => {
 
   it('applies custom className', () => {
     render(
-      <SimpleDialog 
-        trigger={<Button>Open Dialog</Button>}
-        className="custom-dialog"
-      >
+      <SimpleDialog trigger={<Button>Open Dialog</Button>} className="custom-dialog">
         Content
-      </SimpleDialog>
+      </SimpleDialog>,
     )
 
     // 点击触发器打开对话框

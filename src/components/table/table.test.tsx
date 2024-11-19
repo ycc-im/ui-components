@@ -1,14 +1,15 @@
-import { describe, it, expect } from 'vitest'
 import { render, screen } from '@testing-library/react'
+import { describe, expect, it } from 'vitest'
+
 import {
   Table,
-  TableHeader,
   TableBody,
+  TableCaption,
+  TableCell,
   TableFooter,
   TableHead,
+  TableHeader,
   TableRow,
-  TableCell,
-  TableCaption,
 } from './table'
 
 describe('Table', () => {
@@ -25,9 +26,9 @@ describe('Table', () => {
             <TableCell>Cell</TableCell>
           </TableRow>
         </TableBody>
-      </Table>
+      </Table>,
     )
-    
+
     expect(screen.getByRole('table')).toBeDefined()
     expect(screen.getByText('Header')).toBeDefined()
     expect(screen.getByText('Cell')).toBeDefined()
@@ -42,7 +43,7 @@ describe('Table', () => {
             <TableCell>Cell</TableCell>
           </TableRow>
         </TableBody>
-      </Table>
+      </Table>,
     )
 
     expect(screen.getByText('Table Caption')).toBeDefined()
@@ -61,7 +62,7 @@ describe('Table', () => {
             <TableCell>Footer</TableCell>
           </TableRow>
         </TableFooter>
-      </Table>
+      </Table>,
     )
 
     expect(screen.getByText('Footer')).toBeDefined()
@@ -86,7 +87,7 @@ describe('Table', () => {
           </TableRow>
         </TableFooter>
         <TableCaption className="custom-caption">Caption</TableCaption>
-      </Table>
+      </Table>,
     )
 
     // 验证自定义类名
@@ -106,7 +107,7 @@ describe('Table', () => {
     expect(caption?.className).toContain('custom-caption')
 
     const rows = table.querySelectorAll('tr')
-    rows.forEach(row => {
+    rows.forEach((row) => {
       expect(row.className).toContain('custom-row')
     })
 
@@ -114,7 +115,7 @@ describe('Table', () => {
     expect(head?.className).toContain('custom-head')
 
     const cells = table.querySelectorAll('td')
-    cells.forEach(cell => {
+    cells.forEach((cell) => {
       expect(cell.className).toContain('custom-cell')
     })
   })
@@ -147,7 +148,7 @@ describe('Table', () => {
             <TableCell colSpan={3}>Total: 2 employees</TableCell>
           </TableRow>
         </TableFooter>
-      </Table>
+      </Table>,
     )
 
     expect(screen.getByText('Complex Table')).toBeDefined()
@@ -172,7 +173,7 @@ describe('Table', () => {
           </TableRow>
         </TableHeader>
         <TableBody />
-      </Table>
+      </Table>,
     )
 
     expect(screen.getByRole('table')).toBeDefined()

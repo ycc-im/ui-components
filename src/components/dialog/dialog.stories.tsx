@@ -1,5 +1,6 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { Button } from '../button';
+import type { Meta, StoryObj } from '@storybook/react'
+
+import { Button } from '../button'
 import {
   Dialog,
   DialogContent,
@@ -8,7 +9,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from './dialog';
+} from './dialog'
 
 // 创建一个包装组件来展示Dialog
 const DialogDemo = () => {
@@ -20,14 +21,12 @@ const DialogDemo = () => {
       <DialogContent>
         <DialogHeader>
           <DialogTitle>基本对话框</DialogTitle>
-          <DialogDescription>
-            这是一个基本的对话框示例。
-          </DialogDescription>
+          <DialogDescription>这是一个基本的对话框示例。</DialogDescription>
         </DialogHeader>
       </DialogContent>
     </Dialog>
-  );
-};
+  )
+}
 
 const meta = {
   title: 'Components/Dialog 对话框',
@@ -36,12 +35,12 @@ const meta = {
     layout: 'centered',
   },
   tags: ['autodocs'],
-} satisfies Meta<typeof DialogDemo>;
+} satisfies Meta<typeof DialogDemo>
 
-export default meta;
-type Story = StoryObj<typeof meta>;
+export default meta
+type Story = StoryObj<typeof meta>
 
-export const Basic: Story = {};
+export const Basic: Story = {}
 
 export const WithForm: Story = {
   render: () => (
@@ -52,9 +51,7 @@ export const WithForm: Story = {
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
           <DialogTitle>编辑个人资料</DialogTitle>
-          <DialogDescription>
-            在这里修改您的个人资料信息。
-          </DialogDescription>
+          <DialogDescription>在这里修改您的个人资料信息。</DialogDescription>
         </DialogHeader>
         <div className="grid gap-4 py-4">
           <div className="grid grid-cols-4 items-center gap-4">
@@ -84,7 +81,7 @@ export const WithForm: Story = {
       </DialogContent>
     </Dialog>
   ),
-};
+}
 
 export const Alert: Story = {
   render: () => (
@@ -106,4 +103,4 @@ export const Alert: Story = {
       </DialogContent>
     </Dialog>
   ),
-};
+}

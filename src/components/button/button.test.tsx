@@ -1,5 +1,6 @@
-import { describe, it, expect } from 'vitest'
 import { render, screen } from '@testing-library/react'
+import { describe, expect, it } from 'vitest'
+
 import { Button } from './button'
 
 describe('Button', () => {
@@ -73,7 +74,7 @@ describe('Button', () => {
     const { container } = render(
       <Button asChild>
         <a href="#">Link Button</a>
-      </Button>
+      </Button>,
     )
     expect(container.querySelector('a')).toBeDefined()
   })
@@ -99,7 +100,7 @@ describe('Button', () => {
 
   it('prevents text wrapping', () => {
     const { container } = render(
-      <Button>This is a very long button text that should not wrap</Button>
+      <Button>This is a very long button text that should not wrap</Button>,
     )
     const button = container.firstChild as HTMLElement
     expect(button.className).toContain('whitespace-nowrap')
