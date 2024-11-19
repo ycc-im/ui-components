@@ -77,4 +77,31 @@ describe('Button', () => {
     )
     expect(container.querySelector('a')).toBeDefined()
   })
+
+  // 新增测试用例
+  it('has minimum width by default', () => {
+    const { container } = render(<Button>Short</Button>)
+    const button = container.firstChild as HTMLElement
+    expect(button.className).toContain('min-w-[120px]')
+  })
+
+  it('applies full width when fullWidth is true', () => {
+    const { container } = render(<Button fullWidth>Full Width Button</Button>)
+    const button = container.firstChild as HTMLElement
+    expect(button.className).toContain('w-full')
+  })
+
+  it('icon button should not have minimum width', () => {
+    const { container } = render(<Button size="icon">+</Button>)
+    const button = container.firstChild as HTMLElement
+    expect(button.className).toContain('min-w-0')
+  })
+
+  it('prevents text wrapping', () => {
+    const { container } = render(
+      <Button>This is a very long button text that should not wrap</Button>
+    )
+    const button = container.firstChild as HTMLElement
+    expect(button.className).toContain('whitespace-nowrap')
+  })
 })
