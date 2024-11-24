@@ -15,6 +15,7 @@ interface SimpleDialogProps {
   onConfirm?: () => Promise<void> | void
   isLoading?: boolean
   tips?: React.ReactNode | string
+  variant?: 'default' | 'delete'
 }
 
 export function SimpleDialog({
@@ -27,6 +28,7 @@ export function SimpleDialog({
   onConfirm,
   isLoading,
   tips,
+  variant = 'default',
   ...props
 }: SimpleDialogProps) {
   const [open, setOpen] = React.useState(false)
@@ -44,10 +46,17 @@ export function SimpleDialog({
       <DialogContent className={className} {...props}>
         {title && (
           <div className="mb-4 flex flex-col space-y-1.5 text-center sm:text-left">
-            <h3 className="text-lg font-semibold">{title}</h3>
+            <h3 className={cn(
+              "text-lg font-semibold",
+              variant === 'delete' && "text-red-600"
+            )}>{title}</h3>
           </div>
         )}
-        {children}
+        <div className={cn(
+          variant === 'delete' && "text-red-600/90"
+        )}>
+          {children}
+        </div>
         <div className="mt-4 flex flex-col-reverse sm:flex-row sm:justify-end sm:items-center sm:space-x-4">
           {tips && (
             <div
@@ -71,6 +80,7 @@ export function SimpleDialog({
                 onClick={handleConfirm}
                 disabled={isLoading}
                 className="relative min-w-[80px]"
+                variant={variant === 'delete' ? 'destructive' : 'default'}
               >
                 <span className={cn('transition-opacity', isLoading ? 'opacity-0' : 'opacity-100')}>
                   {confirmText}
