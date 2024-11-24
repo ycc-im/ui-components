@@ -80,7 +80,8 @@ jobs:
       - name: Generate Changelog
         run: |
           pnpm add -D conventional-changelog-cli
-          npx conventional-changelog -p angular -i CHANGELOG.md -s
+          # Regenerate the entire changelog from scratch
+          npx conventional-changelog -p angular -i CHANGELOG.md -s -r 0
           
       - name: Commit and push changes
         run: |
