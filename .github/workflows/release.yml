@@ -38,9 +38,42 @@ jobs:
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           
+      - name: Determine version bump
+        id: bump
+        run: |
+          PR_TITLE="${{ github.event.pull_request.title }}"
+          PR_TITLE_LOWER=$(echo "$PR_TITLE" | tr '[:upper:]' '[:lower:]')
+          
+          # Major version bump patterns
+          if [[ $PR_TITLE_LOWER == breaking:* ]] || [[ $PR_TITLE_LOWER == major:* ]]; then
+            echo "bump=major" >> $GITHUB_OUTPUT
+          
+          # Minor version bump patterns
+          elif [[ $PR_TITLE_LOWER == feat:* ]] || \
+               [[ $PR_TITLE_LOWER == feature:* ]] || \
+               [[ $PR_TITLE_LOWER == new:* ]] || \
+               [[ $PR_TITLE_LOWER == minor:* ]] || \
+               [[ $PR_TITLE_LOWER == update:* ]]; then
+            echo "bump=minor" >> $GITHUB_OUTPUT
+          
+          # Patch version bump patterns
+          elif [[ $PR_TITLE_LOWER == fix:* ]] || \
+               [[ $PR_TITLE_LOWER == build:* ]] || \
+               [[ $PR_TITLE_LOWER == maint:* ]] || \
+               [[ $PR_TITLE_LOWER == test:* ]] || \
+               [[ $PR_TITLE_LOWER == patch:* ]] || \
+               [[ $PR_TITLE_LOWER == docs:* ]] || \
+               [[ $PR_TITLE_LOWER == chore:* ]]; then
+            echo "bump=patch" >> $GITHUB_OUTPUT
+          
+          # Default to patch for unrecognized prefixes
+          else
+            echo "bump=patch" >> $GITHUB_OUTPUT
+          fi
+
       - name: Bump version
         run: |
-          echo "NEW_VERSION=$(npm version patch -m 'chore(release): bump version to %s')" >> $GITHUB_ENV
+          echo "NEW_VERSION=$(npm version ${{ steps.bump.outputs.bump }} -m 'chore(release): bump version to %s')" >> $GITHUB_ENV
           
       - name: Generate Changelog
         run: |
