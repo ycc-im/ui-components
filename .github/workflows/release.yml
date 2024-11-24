@@ -122,11 +122,6 @@ jobs:
           MERGED_VERSION=$(node -p "require('./package.json').version")
           echo "MERGED_VERSION=$MERGED_VERSION" >> $GITHUB_ENV
 
-      - name: Generate Changelog
-        run: |
-          pnpm add -D conventional-changelog-cli
-          npx conventional-changelog -p angular -i CHANGELOG.md -s
-
       - name: Build
         run: pnpm run build
           
@@ -136,12 +131,6 @@ jobs:
           
       - name: Publish to npm
         run: npm publish --access public
-        
-      - name: Commit changelog to main
-        run: |
-          git add CHANGELOG.md
-          git commit -m "chore(release): update changelog for ${{ env.MERGED_VERSION }}"
-          git push origin main
           
       - name: Create GitHub Release
         uses: actions/create-release@v1
