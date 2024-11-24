@@ -25,6 +25,18 @@ export const Basic: Story = {
   },
 }
 
+export const DeleteAlert: Story = {
+  args: {
+    trigger: <Button variant="destructive">删除项目</Button>,
+    title: '删除确认',
+    children: '您确定要删除此项目吗？此操作无法撤销。',
+    cancelText: '取消',
+    confirmText: '删除',
+    variant: 'delete',
+    tips: '删除后的数据将无法恢复，请谨慎操作。',
+  },
+}
+
 export const WithTips: Story = {
   args: {
     trigger: <Button>打开对话框</Button>,
