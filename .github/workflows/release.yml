@@ -80,7 +80,8 @@ jobs:
       - name: Generate Changelog
         run: |
           pnpm add -D conventional-changelog-cli
-          npx conventional-changelog -p angular -i CHANGELOG.md -s
+          # Regenerate the entire changelog from scratch
+          npx conventional-changelog -p angular -i CHANGELOG.md -s -r 0
           
       - name: Commit and push changes
         run: |
@@ -102,7 +103,8 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '18.x'
-          registry-url: 'https://registry.npmjs.org'
+          registry-url: 'https://registry.npmjs.org/'
+          scope: '@ycc.im'
           
       - name: Setup pnpm
         uses: pnpm/action-setup@v2
@@ -127,10 +129,13 @@ jobs:
           
       - name: Create .npmrc for automation token
         run: |
-          echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_AUTOMATION_TOKEN }}" > .npmrc
+          echo "//registry.npmjs.org/:_authToken=\${NODE_AUTH_TOKEN}" > .npmrc
+          echo "@ycc.im:registry=https://registry.npmjs.org/" >> .npmrc
           
       - name: Publish to npm
         run: npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTOMATION_TOKEN }}
           
       - name: Create GitHub Release
         uses: actions/create-release@v1
