@@ -1,3 +1,7 @@
+## [0.2.1](https://github.com/ycc-im/ui-components/compare/0.2.0...0.2.1) (2024-11-24)
+
+
+
 # 0.2.0 (2024-11-24)
 
 
