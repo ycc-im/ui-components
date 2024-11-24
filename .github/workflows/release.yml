@@ -96,6 +96,7 @@ jobs:
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
+          ref: main
           
       - name: Setup Node.js
         uses: actions/setup-node@v3
@@ -111,21 +112,44 @@ jobs:
       - name: Install dependencies
         run: pnpm install --no-frozen-lockfile
           
+      - name: Configure Git
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+
+      - name: Get version from merged branch
+        run: |
+          MERGED_VERSION=$(node -p "require('./package.json').version")
+          echo "MERGED_VERSION=$MERGED_VERSION" >> $GITHUB_ENV
+
+      - name: Generate Changelog
+        run: |
+          pnpm add -D conventional-changelog-cli
+          npx conventional-changelog -p angular -i CHANGELOG.md -s
+
       - name: Build
         run: pnpm run build
           
+      - name: Create .npmrc for automation token
+        run: |
+          echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_AUTOMATION_TOKEN }}" > .npmrc
+          
       - name: Publish to npm
         run: npm publish --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        
+      - name: Commit changelog to main
+        run: |
+          git add CHANGELOG.md
+          git commit -m "chore(release): update changelog for ${{ env.MERGED_VERSION }}"
+          git push origin main
           
       - name: Create GitHub Release
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ env.NEW_VERSION }}
-          release_name: Release ${{ env.NEW_VERSION }}
+          tag_name: ${{ env.MERGED_VERSION }}
+          release_name: Release ${{ env.MERGED_VERSION }}
           body_path: CHANGELOG.md
           draft: false
           prerelease: false
