@@ -1,4 +1,4 @@
-# [0.3.0](https://github.com/ycc-im/ui-components/compare/0.2.1...0.3.0) (2024-11-24)
+## [0.2.1](https://github.com/ycc-im/ui-components/compare/0.2.0...0.2.1) (2024-11-24)
 
 
 ### Bug Fixes
@@ -10,7 +10,6 @@
 ### Features
 
 * Add Carousel Component and Update Dependencies ([06fba38](https://github.com/ycc-im/ui-components/commit/06fba38d388934272afa21f435d541f6060d90ac))
-* add checkbox component using shadcn ([1abbdb7](https://github.com/ycc-im/ui-components/commit/1abbdb7d7f156eb2f6f9fc3e72be3ee100599384))
 * add delete variant to SimpleDialog ([4652479](https://github.com/ycc-im/ui-components/commit/4652479e50504552b60cadc46efac378f3547a57))
 * add permissions ([6ab8795](https://github.com/ycc-im/ui-components/commit/6ab87950f9bd91e9fdb000035f3466145e4ea156))
 * **command:** add stories for Command component with interactive examples ([d46210f](https://github.com/ycc-im/ui-components/commit/d46210fe739bdbdc7ae02e9f5cacaa6db7a9eb1b))
