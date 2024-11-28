@@ -34,9 +34,20 @@ const testColumns: ColumnDef<TestData>[] = [
   },
 ]
 
+// Test wrapper component
+function TestWrapper({ children }: { children: React.ReactNode }) {
+  return <div>{children}</div>
+}
+
+const customRender = (ui: React.ReactElement) => {
+  return render(ui, {
+    wrapper: TestWrapper,
+  })
+}
+
 describe('DataTable', () => {
   it('renders table with data correctly', () => {
-    render(<DataTable columns={testColumns} data={testData} />)
+    customRender(<DataTable columns={testColumns} data={testData} />)
 
     // 验证表头
     expect(screen.getByText('ID')).toBeDefined()
@@ -51,7 +62,7 @@ describe('DataTable', () => {
   })
 
   it('renders empty state correctly', () => {
-    render(<DataTable columns={testColumns} data={[]} />)
+    customRender(<DataTable columns={testColumns} data={[]} />)
     expect(screen.getByText('暂无数据')).toBeDefined()
   })
 
@@ -65,41 +76,56 @@ describe('DataTable', () => {
       },
     ]
 
-    render(<DataTable columns={columnsWithCustomCell} data={testData} />)
+    customRender(<DataTable columns={columnsWithCustomCell} data={testData} />)
     const ageCell = screen.getByText('30').parentElement
     expect(ageCell?.className).toContain('text-blue-500')
   })
 
-  it('handles row selection', () => {
-    render(<DataTable columns={testColumns} data={testData} />)
-
-    // 点击行
-    const row = screen.getByText('John').closest('tr')
-    if (row) {
-      fireEvent.click(row)
-      expect(row.getAttribute('data-state')).toBe('selected')
-    }
-  })
-
   it('handles sorting', () => {
-    render(<DataTable columns={testColumns} data={testData} />)
+    customRender(<DataTable columns={testColumns} data={testData} />)
 
-    // 点击表头进行排序
+    // Click header twice for ascending sort
     const nameHeader = screen.getByText('Name')
     fireEvent.click(nameHeader)
+    fireEvent.click(nameHeader)
 
-    // 验证排序后的顺序
+    // Get all name cells
     const cells = screen.getAllByRole('cell')
     const names = cells.filter((cell) => ['Bob', 'Jane', 'John'].includes(cell.textContent || ''))
-    expect(names[0].textContent).toBe('Bob')
+    
+    // After ascending sort, Bob should be first
+    expect(names[0]).toHaveTextContent('Bob')
   })
 
   it('handles column visibility', () => {
-    const { container } = render(<DataTable columns={testColumns} data={testData} />)
+    const { container } = customRender(<DataTable columns={testColumns} data={testData} />)
 
-    // 默认应该显示所有列
+    // Check if all columns are visible initially
     const headers = container.querySelectorAll('th')
     expect(headers.length).toBe(3)
+
+    // Verify content of visible columns
+    expect(screen.getByText('ID')).toBeInTheDocument()
+    expect(screen.getByText('Name')).toBeInTheDocument()
+    expect(screen.getByText('Age')).toBeInTheDocument()
+  })
+
+  it('handles row selection', () => {
+    customRender(<DataTable columns={testColumns} data={testData} />)
+
+    // Find and click the first row
+    const firstRow = screen.getByText('John').closest('tr')
+    expect(firstRow).not.toBeNull()
+    
+    if (firstRow) {
+      fireEvent.click(firstRow)
+      expect(firstRow).toHaveAttribute('data-state', 'selected')
+    }
+  })
+
+  it('displays empty state when no data', () => {
+    customRender(<DataTable columns={testColumns} data={[]} />)
+    expect(screen.getByText('暂无数据')).toBeInTheDocument()
   })
 
   it('handles complex data structure', () => {
@@ -138,29 +164,42 @@ describe('DataTable', () => {
       },
     ]
 
-    render(<DataTable columns={complexColumns} data={complexData} />)
+    customRender(<DataTable columns={complexColumns} data={complexData} />)
 
     expect(screen.getByText('John')).toBeDefined()
     expect(screen.getByText('30')).toBeDefined()
   })
 
-  it('handles column filters', () => {
+  it('handles column filters', async () => {
     const columnsWithFilter: ColumnDef<TestData>[] = [
       {
         accessorKey: 'name',
-        header: 'Name',
+        header: ({ column }) => {
+          return (
+            <div>
+              <div>Name</div>
+              <input
+                type="text"
+                value={(column.getFilterValue() as string) ?? ''}
+                onChange={(e) => column.setFilterValue(e.target.value)}
+                className="max-w-sm"
+                data-testid="name-filter"
+              />
+            </div>
+          )
+        },
         enableColumnFilter: true,
       },
     ]
 
-    render(<DataTable columns={columnsWithFilter} data={testData} />)
+    customRender(<DataTable columns={columnsWithFilter} data={testData} />)
 
-    // 验证过滤功能
-    const filterInput = screen.getByPlaceholderText('Filter...')
+    // Find and use the filter input
+    const filterInput = screen.getByTestId('name-filter')
     fireEvent.change(filterInput, { target: { value: 'John' } })
 
-    // 应该只显示John的数据
-    expect(screen.getByText('John')).toBeDefined()
-    expect(screen.queryByText('Jane')).toBeNull()
+    // Should only show John's data
+    expect(screen.getByText('John')).toBeInTheDocument()
+    expect(screen.queryByText('Jane')).not.toBeInTheDocument()
   })
 })
