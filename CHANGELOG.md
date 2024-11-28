@@ -1,8 +1,9 @@
-## [0.2.1](https://github.com/ycc-im/ui-components/compare/0.2.0...0.2.1) (2024-11-24)
+## [0.2.2](https://github.com/ycc-im/ui-components/compare/0.2.1...0.2.2) (2024-11-28)
 
 
 ### Bug Fixes
 
+* Corrected pre-push hook to use `test:run` script ([4c5d8c2](https://github.com/ycc-im/ui-components/commit/4c5d8c2fe0d588f8c2d2c3413e8564c6cdea9fe2))
 * export buttonVariants from button component ([e32efcb](https://github.com/ycc-im/ui-components/commit/e32efcbd3c2ff6dc142d8af22f2a7697f6c066dd))
 * remove typescript errors and bump version to 0.1.2 ([436fb43](https://github.com/ycc-im/ui-components/commit/436fb4376b77a8b78b185ce84f2b5fd61a4594be))
 
@@ -10,6 +11,8 @@
 ### Features
 
 * Add Carousel Component and Update Dependencies ([06fba38](https://github.com/ycc-im/ui-components/commit/06fba38d388934272afa21f435d541f6060d90ac))
+* Add Checkbox component and Storybook stories ([eb03ae6](https://github.com/ycc-im/ui-components/commit/eb03ae62c7187975e741528774854150011eb9b3))
+* add checkbox component using shadcn ([1abbdb7](https://github.com/ycc-im/ui-components/commit/1abbdb7d7f156eb2f6f9fc3e72be3ee100599384))
 * add delete variant to SimpleDialog ([4652479](https://github.com/ycc-im/ui-components/commit/4652479e50504552b60cadc46efac378f3547a57))
 * add permissions ([6ab8795](https://github.com/ycc-im/ui-components/commit/6ab87950f9bd91e9fdb000035f3466145e4ea156))
 * **command:** add stories for Command component with interactive examples ([d46210f](https://github.com/ycc-im/ui-components/commit/d46210fe739bdbdc7ae02e9f5cacaa6db7a9eb1b))
