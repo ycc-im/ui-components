@@ -10,7 +10,7 @@ npm run lint || {
 }
 
 # Run tests
-npm run test || {
+npm run test:run || {
     echo "❌ Tests failed. Please fix the failing tests before pushing."
     exit 1
 }
