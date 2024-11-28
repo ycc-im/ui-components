@@ -15,7 +15,7 @@ export default meta
 type Story = StoryObj<typeof Checkbox>
 
 export const Default: Story = {
-  render: (args) => (
+  render: (args: React.ComponentProps<typeof Checkbox>) => (
     <div className="flex min-h-[200px] w-full items-center justify-center">
       <Checkbox {...args} />
     </div>
@@ -23,7 +23,7 @@ export const Default: Story = {
 }
 
 export const WithLabel: Story = {
-  render: (args) => (
+  render: (args: React.ComponentProps<typeof Checkbox>) => (
     <div className="flex min-h-[200px] w-full items-center justify-center">
       <div className="flex items-center space-x-2">
         <Checkbox id="terms" {...args} />
@@ -39,7 +39,7 @@ export const WithLabel: Story = {
 }
 
 export const Checked: Story = {
-  render: (args) => (
+  render: (args: React.ComponentProps<typeof Checkbox>) => (
     <div className="flex min-h-[200px] w-full items-center justify-center">
       <Checkbox defaultChecked {...args} />
     </div>
@@ -47,7 +47,7 @@ export const Checked: Story = {
 }
 
 export const Disabled: Story = {
-  render: (args) => (
+  render: (args: React.ComponentProps<typeof Checkbox>) => (
     <div className="flex min-h-[200px] w-full items-center justify-center">
       <Checkbox disabled {...args} />
     </div>
@@ -55,7 +55,7 @@ export const Disabled: Story = {
 }
 
 export const DisabledChecked: Story = {
-  render: (args) => (
+  render: (args: React.ComponentProps<typeof Checkbox>) => (
     <div className="flex min-h-[200px] w-full items-center justify-center">
       <Checkbox disabled defaultChecked {...args} />
     </div>
@@ -63,7 +63,7 @@ export const DisabledChecked: Story = {
 }
 
 export const FormExample: Story = {
-  render: (args) => (
+  render: (args: React.ComponentProps<typeof Checkbox>) => (
     <div className="flex min-h-[200px] w-full items-center justify-center">
       <form className="space-y-4">
         <div className="flex items-center space-x-2">
