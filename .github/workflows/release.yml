@@ -2,7 +2,7 @@ name: Release
 
 on:
   pull_request:
-    types: [opened, synchronize, closed]
+    types: [closed]
     branches:
       - main
 
@@ -11,19 +11,22 @@ permissions:
   pull-requests: write
 
 jobs:
-  update-branch:
-    if: github.event.action != 'closed'
+  release:
+    if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     
     steps:
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
+          ref: main
           
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '18.x'
+          registry-url: 'https://registry.npmjs.org/'
+          scope: '@ycc.im'
           
       - name: Setup pnpm
         uses: pnpm/action-setup@v2
@@ -37,7 +40,7 @@ jobs:
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          
+
       - name: Determine version bump
         id: bump
         run: |
@@ -71,7 +74,7 @@ jobs:
             echo "bump=patch" >> $GITHUB_OUTPUT
           fi
 
-      - name: Update version in branch
+      - name: Update version
         run: |
           CURRENT_VERSION=$(node -p "require('./package.json').version")
           NEW_VERSION=$(npm version ${{ steps.bump.outputs.bump }} --no-git-tag-version)
@@ -83,46 +86,11 @@ jobs:
           # Regenerate the entire changelog from scratch
           npx conventional-changelog -p angular -i CHANGELOG.md -s -r 0
           
-      - name: Commit and push changes
+      - name: Commit version and changelog
         run: |
           git add CHANGELOG.md package.json
           git commit -m "chore: update version to ${{ env.NEW_VERSION }} and changelog"
-          git push origin HEAD:${{ github.head_ref }}
-
-  release:
-    if: github.event.pull_request.merged == true
-    runs-on: ubuntu-latest
-    
-    steps:
-      - uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-          ref: main
-          
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18.x'
-          registry-url: 'https://registry.npmjs.org/'
-          scope: '@ycc.im'
-          
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: 8
-          
-      - name: Install dependencies
-        run: pnpm install --no-frozen-lockfile
-          
-      - name: Configure Git
-        run: |
-          git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "github-actions[bot]"
-
-      - name: Get version from merged branch
-        run: |
-          MERGED_VERSION=$(node -p "require('./package.json').version")
-          echo "MERGED_VERSION=$MERGED_VERSION" >> $GITHUB_ENV
+          git push origin main
 
       - name: Build
         run: pnpm run build
@@ -142,8 +110,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ env.MERGED_VERSION }}
-          release_name: Release ${{ env.MERGED_VERSION }}
+          tag_name: ${{ env.NEW_VERSION }}
+          release_name: Release ${{ env.NEW_VERSION }}
           body_path: CHANGELOG.md
           draft: false
           prerelease: false
