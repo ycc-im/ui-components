@@ -1,20 +1,21 @@
-import type { Meta, StoryObj } from "@storybook/react"
+import type { Meta, StoryObj } from '@storybook/react'
+
 import {
   Command,
   CommandDialog,
-  CommandInput,
-  CommandList,
   CommandEmpty,
   CommandGroup,
+  CommandInput,
   CommandItem,
+  CommandList,
   CommandSeparator,
   CommandShortcut,
-} from "./command"
+} from './command'
 
 const meta: Meta<typeof Command> = {
-  title: "Components/Command",
+  title: 'Components/Command',
   component: Command,
-  tags: ["autodocs"],
+  tags: ['autodocs'],
 }
 
 export default meta
@@ -27,25 +28,25 @@ export const Basic: Story = {
       <CommandList>
         <CommandEmpty>No results found.</CommandEmpty>
         <CommandGroup heading="Suggestions">
-          <CommandItem value="calendar" onSelect={() => console.log("Calendar selected")}>
+          <CommandItem value="calendar" onSelect={() => console.log('Calendar selected')}>
             Calendar
           </CommandItem>
-          <CommandItem value="emoji" onSelect={() => console.log("Search Emoji selected")}>
+          <CommandItem value="emoji" onSelect={() => console.log('Search Emoji selected')}>
             Search Emoji
           </CommandItem>
-          <CommandItem value="calculator" onSelect={() => console.log("Calculator selected")}>
+          <CommandItem value="calculator" onSelect={() => console.log('Calculator selected')}>
             Calculator
           </CommandItem>
         </CommandGroup>
         <CommandSeparator />
         <CommandGroup heading="Settings">
-          <CommandItem value="profile" onSelect={() => console.log("Profile selected")}>
+          <CommandItem value="profile" onSelect={() => console.log('Profile selected')}>
             Profile
           </CommandItem>
-          <CommandItem value="billing" onSelect={() => console.log("Billing selected")}>
+          <CommandItem value="billing" onSelect={() => console.log('Billing selected')}>
             Billing
           </CommandItem>
-          <CommandItem value="settings" onSelect={() => console.log("Settings selected")}>
+          <CommandItem value="settings" onSelect={() => console.log('Settings selected')}>
             Settings
           </CommandItem>
         </CommandGroup>
@@ -61,15 +62,15 @@ export const WithShortcuts: Story = {
       <CommandList>
         <CommandEmpty>No results found.</CommandEmpty>
         <CommandGroup heading="Actions">
-          <CommandItem value="new-file" onSelect={() => console.log("New File selected")}>
+          <CommandItem value="new-file" onSelect={() => console.log('New File selected')}>
             <span>New File</span>
             <CommandShortcut>⌘N</CommandShortcut>
           </CommandItem>
-          <CommandItem value="save" onSelect={() => console.log("Save selected")}>
+          <CommandItem value="save" onSelect={() => console.log('Save selected')}>
             <span>Save</span>
             <CommandShortcut>⌘S</CommandShortcut>
           </CommandItem>
-          <CommandItem value="copy" onSelect={() => console.log("Copy selected")}>
+          <CommandItem value="copy" onSelect={() => console.log('Copy selected')}>
             <span>Copy</span>
             <CommandShortcut>⌘C</CommandShortcut>
           </CommandItem>
@@ -86,13 +87,16 @@ export const WithDialog: Story = {
       <CommandList>
         <CommandEmpty>No results found.</CommandEmpty>
         <CommandGroup heading="Quick Actions">
-          <CommandItem value="open-project" onSelect={() => console.log("Open Project selected")}>
+          <CommandItem value="open-project" onSelect={() => console.log('Open Project selected')}>
             Open Project
           </CommandItem>
-          <CommandItem value="new-document" onSelect={() => console.log("Create New Document selected")}>
+          <CommandItem
+            value="new-document"
+            onSelect={() => console.log('Create New Document selected')}
+          >
             Create New Document
           </CommandItem>
-          <CommandItem value="share" onSelect={() => console.log("Share File selected")}>
+          <CommandItem value="share" onSelect={() => console.log('Share File selected')}>
             Share File
           </CommandItem>
         </CommandGroup>

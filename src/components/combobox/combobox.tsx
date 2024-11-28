@@ -1,22 +1,17 @@
-"use client"
+'use client'
 
-import * as React from "react"
-import { Check, ChevronsUpDown } from "lucide-react"
-
-import { cn } from "@/lib/utils"
-import { Button } from "@/components/button"
+import { Button } from '@/components/button'
 import {
   Command,
   CommandEmpty,
   CommandGroup,
   CommandInput,
   CommandItem,
-} from "@/components/command"
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/popover"
+} from '@/components/command'
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/popover'
+import { cn } from '@/lib/utils'
+import { Check, ChevronsUpDown } from 'lucide-react'
+import * as React from 'react'
 
 export interface ComboboxProps {
   options: { value: string; label: string }[]
@@ -31,12 +26,12 @@ export function Combobox({
   options,
   value,
   onValueChange,
-  placeholder = "Select an option...",
-  emptyMessage = "No results found.",
+  placeholder = 'Select an option...',
+  emptyMessage = 'No results found.',
   className,
 }: ComboboxProps) {
   const [open, setOpen] = React.useState(false)
-  const [selectedValue, setSelectedValue] = React.useState(value || "")
+  const [selectedValue, setSelectedValue] = React.useState(value || '')
 
   const handleSelect = (currentValue: string) => {
     setSelectedValue(currentValue)
@@ -53,11 +48,9 @@ export function Combobox({
           variant="outline"
           role="combobox"
           aria-expanded={open}
-          className={cn("w-[200px] justify-between", className)}
+          className={cn('w-[200px] justify-between', className)}
         >
-          {selectedValue
-            ? selectedOption?.label
-            : placeholder}
+          {selectedValue ? selectedOption?.label : placeholder}
           <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
         </Button>
       </PopoverTrigger>
@@ -74,8 +67,8 @@ export function Combobox({
               >
                 <Check
                   className={cn(
-                    "mr-2 h-4 w-4",
-                    selectedValue === option.value ? "opacity-100" : "opacity-0"
+                    'mr-2 h-4 w-4',
+                    selectedValue === option.value ? 'opacity-100' : 'opacity-0',
                   )}
                 />
                 {option.label}
