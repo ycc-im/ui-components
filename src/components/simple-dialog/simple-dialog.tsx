@@ -46,17 +46,12 @@ export function SimpleDialog({
       <DialogContent className={className} {...props}>
         {title && (
           <div className="mb-4 flex flex-col space-y-1.5 text-center sm:text-left">
-            <h3 className={cn(
-              "text-lg font-semibold",
-              variant === 'delete' && "text-red-600"
-            )}>{title}</h3>
+            <h3 className={cn('text-lg font-semibold', variant === 'delete' && 'text-red-600')}>
+              {title}
+            </h3>
           </div>
         )}
-        <div className={cn(
-          variant === 'delete' && "text-red-600/90"
-        )}>
-          {children}
-        </div>
+        <div className={cn(variant === 'delete' && 'text-red-600/90')}>{children}</div>
         <div className="mt-4 flex flex-col-reverse sm:flex-row sm:justify-end sm:items-center sm:space-x-4">
           {tips && (
             <div

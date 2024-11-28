@@ -1,17 +1,11 @@
-import type { Meta, StoryObj } from "@storybook/react"
+import type { Meta, StoryObj } from '@storybook/react'
 
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "./carousel"
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from './carousel'
 
 const meta: Meta<typeof Carousel> = {
-  title: "Components/Carousel",
+  title: 'Components/Carousel',
   component: Carousel,
-  tags: ["autodocs"],
+  tags: ['autodocs'],
 }
 
 export default meta
@@ -41,7 +35,7 @@ export const Vertical: Story = {
   render: () => (
     <Carousel
       opts={{
-        align: "start",
+        align: 'start',
       }}
       orientation="vertical"
       className="w-full max-w-xs"
