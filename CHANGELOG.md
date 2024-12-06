@@ -1,4 +1,4 @@
-## [0.2.2](https://github.com/ycc-im/ui-components/compare/0.2.1...0.2.2) (2024-11-28)
+# [0.3.0](https://github.com/ycc-im/ui-components/compare/v0.2.2...v0.3.0) (2024-12-06)
 
 
 ### Bug Fixes
@@ -15,6 +15,7 @@
 * add checkbox component using shadcn ([1abbdb7](https://github.com/ycc-im/ui-components/commit/1abbdb7d7f156eb2f6f9fc3e72be3ee100599384))
 * add delete variant to SimpleDialog ([4652479](https://github.com/ycc-im/ui-components/commit/4652479e50504552b60cadc46efac378f3547a57))
 * add permissions ([6ab8795](https://github.com/ycc-im/ui-components/commit/6ab87950f9bd91e9fdb000035f3466145e4ea156))
+* Add Radix UI Label component and update dependencies ([ef0b486](https://github.com/ycc-im/ui-components/commit/ef0b4865825f36458aa8ec7159115fa2b5411d7a))
 * **command:** add stories for Command component with interactive examples ([d46210f](https://github.com/ycc-im/ui-components/commit/d46210fe739bdbdc7ae02e9f5cacaa6db7a9eb1b))
 * enhance version bump logic based on PR title prefixes ([9945a06](https://github.com/ycc-im/ui-components/commit/9945a062f7a1b988ac42c23f1187e39b95b141e1))
 * remove test for pre-commit ([720314e](https://github.com/ycc-im/ui-components/commit/720314e73fc4bc8ab47b7f8915afa5ecdd1cef21))
