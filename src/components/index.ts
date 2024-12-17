@@ -1,5 +1,5 @@
 export * from './badge'
-export * from './button'
+export * from './Button'
 export * from './calendar'
 export * from './table'
 export * from './data-table'

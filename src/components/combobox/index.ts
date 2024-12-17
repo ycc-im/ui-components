@@ -1,2 +1,1 @@
-export { Combobox } from './combobox'
-export type { ComboboxProps } from './combobox'
+export * from './Combobox'

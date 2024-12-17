@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import * as React from 'react'
 
-import { Calendar } from './calendar'
+import { Calendar } from './Calendar'
 
 // 创建一个包装组件来展示Calendar
 const CalendarDemo = () => {

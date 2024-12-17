@@ -9,7 +9,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from './table'
+} from './Table'
 
 const meta = {
   title: 'Components/Table 表格',

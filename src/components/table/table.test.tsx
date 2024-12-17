@@ -10,7 +10,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from './table'
+} from './Table'
 
 describe('Table', () => {
   it('renders table correctly', () => {

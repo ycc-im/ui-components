@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { Combobox } from './combobox'
+import { Combobox } from './Combobox'
 
 const meta = {
   title: 'Components/Combobox 组合框',

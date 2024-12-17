@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { Button } from '../button'
+import { Button } from '../Button'
 import {
   Dialog,
   DialogContent,
@@ -9,7 +9,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from './dialog'
+} from './Dialog'
 
 // 创建一个包装组件来展示Dialog
 const DialogDemo = () => {
