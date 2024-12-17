@@ -1,4 +1,4 @@
-# [0.4.0](https://github.com/ycc-im/ui-components/compare/v0.3.0...v0.4.0) (2024-12-17)
+## [0.4.1](https://github.com/ycc-im/ui-components/compare/v0.3.0...v0.4.1) (2024-12-17)
 
 
 ### Bug Fixes
