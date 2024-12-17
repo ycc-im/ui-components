@@ -1,0 +1,132 @@
+# UI组件库 Windsurf 规则配置
+
+# 包管理工具规则
+package_management:
+  tool: 'pnpm'               # 强制使用 pnpm
+  lockfile: 'pnpm-lock.yaml' # 锁文件要求
+  scripts:
+    install: 'pnpm install'  # 安装命令
+    add: 'pnpm add'         # 添加依赖命令
+    remove: 'pnpm remove'   # 移除依赖命令
+  workspace:
+    enabled: true           # 启用 workspace
+    hoisting: true         # 启用依赖提升
+
+# 代码风格规则
+style_rules:
+  # 文件命名规则
+  file_naming:
+    components: 'PascalCase'    # 组件文件使用大驼峰
+    utils: 'camelCase'          # 工具函数文件使用小驼峰
+    test: '*.test.ts'          # 测试文件命名格式
+    story: '*.stories.tsx'      # Storybook文件命名格式
+  
+  # 代码格式化规则
+  formatting:
+    indent: 2                   # 缩进空格数
+    quotes: 'single'            # 使用单引号
+    semi: true                  # 使用分号
+    trailingComma: 'es5'        # 尾随逗号风格
+    printWidth: 100             # 每行最大长度
+    
+# 编码规则
+coding_rules:
+  # TypeScript 规则
+  typescript:
+    strict: true               # 启用严格模式
+    noImplicitAny: true       # 不允许隐式的 any 类型
+    noUnusedLocals: true      # 禁止未使用的本地变量
+    noUnusedParameters: true   # 禁止未使用的函数参数
+    
+  # 组件开发规则
+  components:
+    props_interface: true      # 必须为 Props 定义接口
+    props_validation: true     # 必须进行 Props 类型验证
+    functional_components: true # 使用函数式组件
+    memo_usage: 'recommended'   # 建议使用 React.memo
+    
+  # 测试规则
+  testing:
+    coverage_threshold: 80     # 测试覆盖率要求
+    unit_test_required: true   # 要求单元测试
+    snapshot_allowed: false    # 不允许快照测试
+    
+# 文档规则
+documentation_rules:
+  component_docs:
+    required: true            # 要求组件文档
+    props_table: true         # 要求 Props 表格
+    examples: true           # 要求示例代码
+    changelog: true          # 要求更新日志
+    
+  storybook:
+    required: true           # 要求 Storybook 文档
+    controls: true          # 要求 Controls 配置
+    actions: true           # 要求 Actions 配置
+    
+# Git 提交规则
+git_rules:
+  commit_message:
+    format: 'conventional'    # 使用约定式提交
+    scope_required: true     # 要求指定范围
+    types:                   # 允许的提交类型
+      - feat
+      - fix
+      - docs
+      - style
+      - refactor
+      - test
+      - chore
+      
+# 性能规则
+performance_rules:
+  bundle_size:
+    max_component: '50kb'    # 单个组件最大体积
+    max_total: '500kb'       # 总体积限制
+  
+  optimization:
+    tree_shaking: true      # 启用 Tree Shaking
+    code_splitting: true    # 启用代码分割
+    
+# 可访问性规则
+accessibility_rules:
+  wcag_level: 'AA'          # WCAG 合规级别
+  aria_required: true       # 要求 ARIA 属性
+  keyboard_navigation: true # 要求键盘导航支持
+
+# 包管理工具规则
+package_management:
+  tool: 'pnpm'               # 强制使用 pnpm
+  lockfile: 'pnpm-lock.yaml' # 锁文件要求
+  scripts:
+    install: 'pnpm install'  # 安装命令
+    add: 'pnpm add'         # 添加依赖命令
+    remove: 'pnpm remove'   # 移除依赖命令
+    test: 'pnpm test:run'   # 测试命令
+    build: 'pnpm build'     # 构建命令
+    dev: 'pnpm dev'         # 开发命令
+    lint: 'pnpm lint'       # 代码检查
+    format: 'pnpm format'   # 代码格式化
+  workspace:
+    enabled: true           # 启用 workspace
+    hoisting: true         # 启用依赖提升
+
+# 编码规则
+coding_rules:
+  # 测试规则
+  testing:
+    framework: 'vitest'          # 使用 vitest 作为测试框架
+    coverage_threshold: 80       # 测试覆盖率要求
+    unit_test_required: true     # 要求单元测试
+    snapshot_allowed: false      # 不允许快照测试
+    command: 'pnpm test:run'     # 指定测试命令
+    vitest_specific:
+      setup: 'vitest.setup.ts'   # vitest 配置文件
+      api:
+        expect: true            # 使用 vitest 的 expect 断言
+        describe: true          # 使用 vitest 的 describe 块
+        test: true             # 使用 vitest 的 test 函数
+        vi: true               # 使用 vitest 的 vi 工具函数
+      features:
+        concurrent: true        # 支持并发测试
+        snapshot: false        # 不使用快照测试
