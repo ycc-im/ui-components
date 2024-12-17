@@ -9,7 +9,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from './dialog'
+} from './Dialog'
 
 // 创建一个包装组件来展示Dialog
 const DialogDemo = () => {

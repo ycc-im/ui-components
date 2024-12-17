@@ -1,28 +1,18 @@
-import {
-  Toast,
-  ToastClose,
-  ToastDescription,
-  ToastProvider,
-  ToastTitle,
-  ToastViewport,
-} from './toast'
+import { Toast as ToastComponent, ToastProvider, ToastViewport } from './Toast'
 import { useToast } from './use-toast'
+
+type ToastProps = React.ComponentProps<typeof ToastComponent>
 
 export function Toaster() {
   const { toasts } = useToast()
 
   return (
     <ToastProvider>
-      {toasts.map(({ id, title, description, action, ...props }) => {
+      {toasts.map(function (toast: ToastProps) {
         return (
-          <Toast key={id} {...props}>
-            <div className="grid gap-1">
-              {title && <ToastTitle>{title}</ToastTitle>}
-              {description && <ToastDescription>{description}</ToastDescription>}
-            </div>
-            {action}
-            <ToastClose />
-          </Toast>
+          <ToastComponent key={toast.id} {...toast}>
+            {toast.title}
+          </ToastComponent>
         )
       })}
       <ToastViewport />

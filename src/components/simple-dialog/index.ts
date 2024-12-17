@@ -1,1 +1,1 @@
-export * from './simple-dialog'
+export * from './SimpleDialog'

@@ -9,7 +9,7 @@ import {
   SheetHeader,
   SheetTitle,
   SheetTrigger,
-} from './sheet'
+} from './Sheet'
 
 // 创建一个包装组件来展示Sheet
 const SheetDemo = () => {

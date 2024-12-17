@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
 import { Button } from '../button'
-import { Toaster } from './toaster'
+import { Toaster } from './Toaster'
 import { useToast } from './use-toast'
 
 // 创建一个包装组件来展示Toast

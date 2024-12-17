@@ -17,7 +17,7 @@ import {
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
-} from './dropdown-menu'
+} from './DropdownMenu'
 
 // 创建一个包装组件来展示DropdownMenu
 const DropdownMenuDemo = () => {

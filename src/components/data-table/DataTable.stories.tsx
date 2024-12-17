@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { ColumnDef } from '@tanstack/react-table'
 
-import { DataTable } from './data-table'
+import { DataTable } from './DataTable'
 
 // 定义示例数据类型
 interface Payment {

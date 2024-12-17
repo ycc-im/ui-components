@@ -1,2 +1,2 @@
-export * from './button'
-export { buttonVariants } from './button.variants'
+export * from './Button'
+export * from './Button.variants'

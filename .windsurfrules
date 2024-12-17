@@ -130,3 +130,36 @@ coding_rules:
       features:
         concurrent: true        # 支持并发测试
         snapshot: false        # 不使用快照测试
+style_rules:
+  # 文件命名规则
+  file_naming:
+    components: 'PascalCase'    # 组件文件使用大驼峰（如：Button.tsx, DataTable.tsx）
+    utils: 'camelCase'          # 工具函数文件使用小驼峰
+    test: '*.test.ts'          # 测试文件命名格式
+    story: '*.stories.tsx'      # Storybook文件命名格式
+    
+  # 目录命名规则
+  directory_naming:
+    components: 'kebab-case'    # 组件目录使用小写连字符（如：data-table, dropdown-menu）
+    utils: 'kebab-case'         # 工具目录使用小写连字符
+    
+  # 组件文件结构规则
+  component_structure:
+    main_component:
+      pattern: '{ComponentName}.tsx'        # 主组件文件（如：Button.tsx）
+      case: 'PascalCase'                   # 使用大驼峰
+    stories:
+      pattern: '{ComponentName}.stories.tsx' # Stories文件（如：Button.stories.tsx）
+      case: 'PascalCase'                   # 使用大驼峰
+    test:
+      pattern: '{ComponentName}.test.tsx'   # 测试文件（如：Button.test.tsx）
+      case: 'PascalCase'                   # 使用大驼峰
+    types:
+      pattern: '{ComponentName}.types.ts'   # 类型定义文件（如：Button.types.ts）
+      case: 'PascalCase'                   # 使用大驼峰
+    utils:
+      pattern: '{componentName}.utils.ts'   # 工具函数文件（如：button.utils.ts）
+      case: 'camelCase'                    # 使用小驼峰
+    index:
+      pattern: 'index.ts'                  # 导出文件
+      case: 'lowercase'                    # 使用小写

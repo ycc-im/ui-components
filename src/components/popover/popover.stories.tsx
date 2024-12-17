@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { Settings2 } from 'lucide-react'
 
 import { Button } from '../button'
-import { Popover, PopoverContent, PopoverTrigger } from './popover'
+import { Popover, PopoverContent, PopoverTrigger } from './Popover'
 
 // 创建一个包装组件来展示Popover
 const PopoverDemo = () => {
