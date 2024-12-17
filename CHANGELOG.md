@@ -1,4 +1,4 @@
-# [0.3.0](https://github.com/ycc-im/ui-components/compare/v0.2.2...v0.3.0) (2024-12-06)
+# [0.4.0](https://github.com/ycc-im/ui-components/compare/v0.3.0...v0.4.0) (2024-12-17)
 
 
 ### Bug Fixes
@@ -19,6 +19,7 @@
 * **command:** add stories for Command component with interactive examples ([d46210f](https://github.com/ycc-im/ui-components/commit/d46210fe739bdbdc7ae02e9f5cacaa6db7a9eb1b))
 * enhance version bump logic based on PR title prefixes ([9945a06](https://github.com/ycc-im/ui-components/commit/9945a062f7a1b988ac42c23f1187e39b95b141e1))
 * remove test for pre-commit ([720314e](https://github.com/ycc-im/ui-components/commit/720314e73fc4bc8ab47b7f8915afa5ecdd1cef21))
+* 添加 Windsurf 规则配置文件及 Textarea 组件 ([93809cc](https://github.com/ycc-im/ui-components/commit/93809cc12ebbcc7118fc4957d3c6a41701ab5e7b))
 
 
 
