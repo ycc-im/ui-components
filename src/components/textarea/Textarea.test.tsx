@@ -12,7 +12,7 @@ describe('Textarea', () => {
 
   it('应该响应用户输入', () => {
     render(<Textarea />)
-    const textarea = screen.getByRole('textbox')
+    const textarea = screen.getByRole('textbox') as HTMLTextAreaElement
     fireEvent.change(textarea, { target: { value: '测试内容' } })
     expect(textarea).toBeDefined()
     expect(textarea.value).toBe('测试内容')
@@ -32,7 +32,7 @@ describe('Textarea', () => {
 
   it('应该支持禁用状态', () => {
     render(<Textarea disabled />)
-    const textarea = screen.getByRole('textbox')
+    const textarea = screen.getByRole('textbox') as HTMLTextAreaElement
     expect(textarea.disabled).toBe(true)
   })
 })
