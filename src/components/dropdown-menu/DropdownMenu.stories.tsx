@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { LogOut, Settings, User } from 'lucide-react'
 import * as React from 'react'
 
-import { Button } from '../Button'
+import { Button } from '../button'
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,

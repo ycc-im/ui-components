@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { Button } from '../Button'
+import { Button } from '../button'
 import { SimpleDialog } from './SimpleDialog'
 
 const meta = {
