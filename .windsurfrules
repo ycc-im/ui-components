@@ -163,3 +163,6 @@ style_rules:
     index:
       pattern: 'index.ts'                  # 导出文件
       case: 'lowercase'                    # 使用小写
+shadcn_ui:
+  source: 'https://ui.shadcn.com/docs'
+  description: 'shadcn UI 是一个开源的 React 组件库，提供了可重用、可定制的组件集合
